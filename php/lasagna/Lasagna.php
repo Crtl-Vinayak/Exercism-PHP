@@ -2,47 +2,53 @@
 
 declare(strict_types=1);
 
-class Lasagna
+final class Lasagna
 {
 
-    public function __construct(
-        protected int $cookTime = 40,
-    ) {}
+    // A constructor helps initialize variables
+    // public function __construct(
+    //     protected int $cookTime = 40,
+    // ) {}
+
+    private const EXPECTED_COOK_TIME = 40;
+    private const MINUTES_PER_LAYER = 2;
 
     // Please define the 'expectedCookTime()' function
-    function expectedCookTime(): int 
+    public function expectedCookTime(): int 
     {
-        return $this->cookTime;
+        return static::EXPECTED_COOK_TIME;
     }
 
     // Please define the 'remainingCookTime($elapsed_minutes)' function
-    function remainingCookTime(int $elapsed_minutes): int
+    public function remainingCookTime(int $elapsed_minutes): int
     {
-        return $this -> expectedCookTime() - $elapsed_minutes;
+        // Same as return ($this -> expectedCookTime() - $elapsed_minutes) ? ($this -> expectedCookTime() - $elapsed_minutes) : 0;
+        // https://stackoverflow.com/questions/1993409/operator-the-elvis-operator-in-php
+        return ($this -> expectedCookTime() - $elapsed_minutes) ?: 0;
     }
 
     // Please define the 'totalPreparationTime($layers_to_prep)' function
-    function totalPreparationTime(int $layers_to_prep): int
+    public function totalPreparationTime(int $layers_to_prep): int
     {
-        return 2 * $layers_to_prep;
+        return static::MINUTES_PER_LAYER * $layers_to_prep;
     }
 
     // Please define the 'totalElapsedTime($layers_to_prep, $elapsed_minutes)' function
-    function totalElapsedTime(int $layers_to_prep, int $elapsed_minutes):int
+    public function totalElapsedTime(int $layers_to_prep, int $elapsed_minutes):int
     {
         return $this -> totalPreparationTime($layers_to_prep) + $elapsed_minutes;
     }
 
     // Please define the 'alarm()' function
-    function alarm():string
+    public function alarm():string
     {
         return "Ding!";
     }
 }
 
-$timer = new Lasagna();
-$timer -> expectedCookTime();
-$timer -> remainingCookTime(30);
-$timer -> totalPreparationTime(2);
-$timer -> totalElapsedTime(3, 20);
-$timer -> alarm();
+// $timer = new Lasagna();
+// $timer -> expectedCookTime();
+// $timer -> remainingCookTime(30);
+// $timer -> totalPreparationTime(2);
+// $timer -> totalElapsedTime(3, 20);
+// $timer -> alarm();
