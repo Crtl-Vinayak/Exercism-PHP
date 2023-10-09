@@ -5,6 +5,8 @@ PHP exercises :D
 
 - https://exercism.org/docs/using/solving-exercises/working-locally
 - https://github.com/exercism/windows-installer
+- https://getcomposer.org/
+- https://phpunit.de/getting-started/phpunit-10.html
 
 1. Replace \<your-api-token\> value:<br>
 exercism configure --token=\<your-api-token\>
