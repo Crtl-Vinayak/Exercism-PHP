@@ -32,32 +32,17 @@ class AnnalynsInfiltration
 
         /** NOTE!
          * 
-         * use && or ||, but and or or?
+         * https://stackoverflow.com/questions/2803321/and-vs-as-operator
          * 
          */
         $x = !$is_archer_awake && $is_dog_present;
         $y = !$is_archer_awake && !$is_knight_awake && $is_prisoner_awake;
         return $x || $y;
 
-        // $x = ((!$is_knight_awake) and $is_dog_present);
-        // $y = (!($is_archer_awake or $is_archer_awake or $is_prisoner_awake));
-
-        // return (($x and !$y) or (!$x and $y));
-        // return ($x xor $y);
-
-        // if ($is_dog_present) {
-        //     if ($is_archer_awake == false) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // } else {
-        //     if ($is_knight_awake == false and $is_archer_awake == false and $is_prisoner_awake == true) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
+        # alternative, using and or logical operators:
+        // $x = ((!$is_archer_awake) and ($is_dog_present));
+        // $y = (((!$is_archer_awake) && (!$is_knight_awake)) && $is_prisoner_awake);
+        // return ($x or $y);
     }
 }
 
