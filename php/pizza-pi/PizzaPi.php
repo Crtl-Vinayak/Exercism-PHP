@@ -2,8 +2,10 @@
 
 class PizzaPi
 {
-    public function calculateDoughRequirement()
+    public function calculateDoughRequirement(int $pizzas, int $persons): int
     {
+        $grams = $pizzas * (($persons * 20) + 200);
+        return $grams;
         throw new \BadFunctionCallException("Implement the function");
     }
 
@@ -22,3 +24,4 @@ class PizzaPi
         throw new \BadFunctionCallException("Implement the function");
     }
 }
+
