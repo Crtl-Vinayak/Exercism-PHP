@@ -3,32 +3,29 @@
 class PizzaPi
 {
 
-    public $SAUCE_PER_PIZZA = 125;
-    public $NUMBER_OF_SLICES = 8;
+    private const MIDDLE_DOUGH = 200;
+    private const PER_PERSON_DOUGH = 20;
+    private const SAUCE_PER_PIZZA = 125;
+    private const NUMBER_OF_SLICES = 8;
 
     public function calculateDoughRequirement(int $pizzas, int $persons): int
     {
-        $grams = $pizzas * (($persons * 20) + 200);
-        return $grams;
-        throw new \BadFunctionCallException("Implement the function");
+        return $pizzas * (($persons * self::PER_PERSON_DOUGH) + self::MIDDLE_DOUGH);;
     }
 
-    public function calculateSauceRequirement(int $pizzas, int $can_volume)
+    public function calculateSauceRequirement(int $pizzas, int $can_volume): int|float
     {
-        return $pizzas * $this->SAUCE_PER_PIZZA / $can_volume;
-        throw new \BadFunctionCallException("Implement the function");
+        return $pizzas * self::SAUCE_PER_PIZZA / $can_volume;
     }
 
-    public function calculateCheeseCubeCoverage(int $length, float $thickness, int $diameter)
+    public function calculateCheeseCubeCoverage(int $length, float $thickness, int $diameter): int
     {
         return floor($length**3 / ($thickness * pi() * $diameter));
-        throw new \BadFunctionCallException("Implement the function");
     }
 
-    public function calculateLeftOverSlices(int $pizzas, int $number_of_friends)
+    public function calculateLeftOverSlices(int $pizzas, int $number_of_friends): int
     {
-        return fmod($pizzas * $this->NUMBER_OF_SLICES, $number_of_friends);
-        throw new \BadFunctionCallException("Implement the function");
+        return $pizzas * self::NUMBER_OF_SLICES % $number_of_friends;
     }
 }
 
@@ -36,8 +33,8 @@ $pizza_pi = new PizzaPi();
 $grams = $pizza_pi -> calculateDoughRequirement(4, 8);
 $cans_to_buy = $pizza_pi -> calculateSauceRequirement(8, 250);
 $cheese_coverage = $pizza_pi -> calculateCheeseCubeCoverage(25, 0.5, 30);
-$total_leftover = $pizza_pi -> calculateLeftOverSlices(2, 4);
+$total_leftover = $pizza_pi -> calculateLeftOverSlices(4, 3);
 print($grams . "<br>");
 print($cans_to_buy . "<br>");
 print($cheese_coverage . "<br>");
-print($total_leftover . "<br>");
+print($total_leftover);
