@@ -2,12 +2,12 @@
 
 class Form
 {
-    function blanks(int $length)
+    function blanks(int $length): string
     {
         return str_repeat(" ", $length);
     }
 
-    function letters(string $word)
+    function letters(string $word): array
     {
         return explode("", $word);
     }
@@ -18,7 +18,7 @@ class Form
         return $difference <= 0;
     }
 
-    function formatAddress(Address $address)
+    function formatAddress(Address $address): string
     {
         $formatted_street = mb_strtoupper($address->street);
         $formatted_postal_code = mb_strtoupper($address->postal_code);
@@ -30,5 +30,3 @@ class Form
             FORMATTED_ADDRESS;
     }
 }
-
-//
