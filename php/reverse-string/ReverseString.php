@@ -26,6 +26,19 @@ declare(strict_types=1);
 
 function reverseString(string $text): string
 {
+
+    // Heavily inspired on https://www.geeksforgeeks.org/php-reverse-string/
+    $len = strlen($text);
+    
+    if ($len == 0 or $len == 1) {
+        return $text;
+    } else {
+        $len -= 2;
+        return substr($text, -1, 1) . reverseString(substr($text, 1, $len)) . substr($text, 0, 1);
+    }
+
     throw new BadFunctionCallException("Please implement the reverseString method!");
 }
 
+$txt = reverseString("Hello everyone");
+var_dump($txt);
